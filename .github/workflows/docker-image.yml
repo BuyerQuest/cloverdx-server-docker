@@ -42,7 +42,7 @@ jobs:
       - name: Run gradlew
         run: |
           chmod +x gradlew
-          ./gradlew clean build -x test
+          ./gradlew build
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
