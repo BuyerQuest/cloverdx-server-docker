@@ -39,10 +39,10 @@ jobs:
         run: |
           curl -SL ${{ github.event.inputs.clover_war_url }} -o clover.war
 
-      - name: List
+      - name: Run gradlew
         run: |
-          echo "Clover WAR file downloaded:"
-          ls -lah ./
+          chmod +x gradlew
+          ./gradlew clean build -x test
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
