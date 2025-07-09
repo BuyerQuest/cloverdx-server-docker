@@ -2,6 +2,13 @@ name: Docker Image CI
 
 on:
   workflow_dispatch:
+    inputs:
+      clover_war_url:
+        description: 'URL to clover.war file'
+        required: true
+        type: string
+        # https://support.cloverdx.com/download?file=7.1.0/server/deploy/tomcat10/Application%20Files/clover.war
+        default: 'https://support.cloverdx.com/download?file=6.7.1/server/deploy/tomcat7-9/Application%20Files/clover.war'
 
 permissions:
   id-token: write
@@ -15,6 +22,10 @@ jobs:
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
+
+      - name: Download clover.war
+        run: |
+          curl -SL ${{ github.event.inputs.clover_war_url }} -o clover.war
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
