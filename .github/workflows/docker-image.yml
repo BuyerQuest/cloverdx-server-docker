@@ -39,6 +39,11 @@ jobs:
         run: |
           curl -SL ${{ github.event.inputs.clover_war_url }} -o clover.war
 
+      - name: List
+        run: |
+          echo "Clover WAR file downloaded:"
+          ls -lah ./
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
