@@ -3,3 +3,4 @@
 **/*.jar
 /clover.war
 **/license.dat
+/.idea/
