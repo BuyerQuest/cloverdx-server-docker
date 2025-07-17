@@ -50,7 +50,7 @@ task copyDjlPytorchLib(type: Copy) {
 
 task copyPrometheusJmxAgent(type: Copy) {
 	from configurations.prometheus
-	into "public/var/clover-lib"
+	into "examples/kubernetes"
 }
 
 // Logging
@@ -59,5 +59,5 @@ tasks.withType(Copy) {
 	eachFile { logger.lifecycle("* {}", it.file.name) }
 }
 
-task build(dependsOn: [copyDbDriverLib, copyCloverLib, copyBouncyCastleLib, copyPrometheusJmxAgent]) {
+task build(dependsOn: [copyDbDriverLib, copyCloverLib, copyBouncyCastleLib]) {
 }
